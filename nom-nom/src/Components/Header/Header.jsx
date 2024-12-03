@@ -1,7 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import 'material-icons/iconfont/material-icons.css';
 
 const Header = () => {
+  const [cartCount, setCartCount] = useState(0);
+
+  // Assuming you have a function to handle adding items to the cart
+  const handleAddItemToCart = () => {
+    // ... logic to add item to cart
+    setCartCount(prevCount => prevCount + 1);
+  };
+
   return (
     <header className="flex justify-between items-center p-4 bg-red-500 text-white">
       <div className="text-lg font-bold">
@@ -16,7 +25,10 @@ const Header = () => {
       </nav>
       <div className="relative">
         <Link to="/cart">
-          <span className="material-icons">shopping_cart</span>
+          <i className="material-icons">shopping_cart</i>
+          {cartCount > 0 && (
+            <span className="absolute top-0 right-0 bg-red-600 text-white rounded-full px-2 py-1 text-xs">{cartCount}</span>
+          )}
         </Link>
       </div>
     </header>
