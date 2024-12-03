@@ -1,12 +1,15 @@
 import React from 'react'
 import pizza from "../../assets/burger.png";
 import burger from "../../assets/pizza.jpg";
+import logo from '../../assets/logo2.png';
 
 function Home() {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-yellow-50 text-center">
     <header className="mb-10">
-      <h1 className="text-4xl font-bold text-gray-800">Your Logo</h1>
+      <h1 className="text-4xl font-bold text-gray-800">
+        <img src={logo} alt="Your Logo" className="w-20 h-auto" />
+      </h1>
     </header>
     <main className="flex flex-col items-center">
       <h2 className="text-3xl font-semibold text-gray-700 mb-5">
