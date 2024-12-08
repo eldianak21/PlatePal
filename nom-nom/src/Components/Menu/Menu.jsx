@@ -9,14 +9,14 @@ import pasta from '../../assets/pasta.jpg';
 
 const Menu = () => {
   const menuItems = [
-    { id: 1, name: 'Delicious Burger', price: 5.99, image: burger },
-    { id: 2, name: 'Tasty Pizza', price: 7.99, image: pizza },
-    { id: 3, name: 'Spicy Chicken Wings', price: 6.49, image: wings },
+    { id: 1, name: 'Delicious Burger', price: 450, image: burger },
+    { id: 2, name: 'Tasty Pizza', price: 399, image: pizza },
+    { id: 3, name: 'Spicy Chicken Wings', price: 549, image: wings },
     { id: 4, name: 'Shawarma', price: 400, image: shawarma },
-    { id: 5, name: 'Club Sandwich', price: 5.99, image: burger }, // Change to correct image if needed
-    { id: 6, name: 'Lasagna', price: 7.99, image: lasagna },
-    { id: 7, name: 'Fettucini Alfredo', price: 6.49, image: wings }, // Change to correct image if needed
-    { id: 8, name: 'Bruschetta', price: 400, image: bruschetta },
+    { id: 5, name: 'Club Sandwich', price: 399, image: burger }, // Change to correct image if needed
+    { id: 6, name: 'Lasagna', price: 500, image: lasagna },
+    { id: 7, name: 'Fettucini Alfredo', price: 559, image: wings }, // Change to correct image if needed
+    { id: 8, name: 'Bruschetta', price: 499, image: bruschetta },
     { id: 9, name: 'Pasta', price: 400, image: pasta },
     // Add more items as needed
   ];
@@ -29,7 +29,7 @@ const Menu = () => {
           <div key={item.id} className="border rounded-lg shadow-lg p-4">
             <img src={item.image} alt={item.name} className="w-full h-32 object-cover rounded-t-lg" />
             <h2 className="text-xl font-semibold mt-2">{item.name}</h2>
-            <p className="text-gray-600">${item.price.toFixed(2)}</p>
+            <p className="text-gray-600">{item.price.toFixed(2)}Birr</p>
             <button className="mt-2 bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-600 transition duration-300">
               Add to Cart
             </button>
