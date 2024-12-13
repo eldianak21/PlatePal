@@ -1,11 +1,18 @@
 // src/Components/Cart/Cart.jsx
 import React from 'react';
 import { MdShoppingCart } from 'react-icons/md';
-import { useCart } from '../../Components/Cart/CartContext'; // Import useCart
+import { useCart } from '../../Components/Cart/CartContext';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleCheckout = () => {
+    // Navigate to the checkout page
+    navigate('/checkout');
+  };
 
   return (
     <div className="p-5 bg-yellow-50 min-h-screen flex flex-col items-center">
@@ -30,7 +37,9 @@ const Cart = () => {
           </div>
           <div className="mt-4 w-full max-w-2xl text-right">
             <h2 className="text-xl font-bold text-gray-800">Total: {totalPrice} Birr</h2>
-            <button className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 mt-4">
+            <button 
+              onClick={handleCheckout} // Call handleCheckout on click
+              className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 mt-4">
               Checkout
             </button>
           </div>
