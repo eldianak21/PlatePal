@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import pizza from "../../assets/pizza.jpg"; // Ensure this is the correct path
 import burger from "../../assets/burger.png"; // Ensure this is the correct path
 import pasta from "../../assets/pasta.jpg"; // New image
@@ -6,6 +7,12 @@ import salad from "../../assets/bruscheta.jpg"; // New image
 import logo from '../../assets/logo2.png'; // Logo image
 
 function Home() {
+  const navigate = useNavigate(); // Create navigate function
+
+  const handleOrderNow = () => {
+    navigate('/menu'); // Navigate to the menu page
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-yellow-50 text-center p-5">
       {/* Main Content Section */}
@@ -17,7 +24,9 @@ function Home() {
         <p className="text-lg text-gray-600 mb-8 max-w-md">
           Explore our diverse menu, crafted to satisfy every craving!
         </p>
-        <button className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 transform hover:scale-105">
+        <button 
+          onClick={handleOrderNow} // Add onClick handler
+          className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 transform hover:scale-105">
           Order Now
         </button>
       </div>
