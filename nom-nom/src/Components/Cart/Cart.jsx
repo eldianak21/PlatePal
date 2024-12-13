@@ -1,14 +1,10 @@
-// src/pages/Cart.jsx
+// src/Components/Cart/Cart.jsx
 import React from 'react';
-import { MdShoppingCart } from 'react-icons/md'; // Importing Material Icon
+import { MdShoppingCart } from 'react-icons/md';
+import { useCart } from '../../Components/Cart/CartContext'; // Import useCart
 
 const Cart = () => {
-  const cartItems = [
-    // Uncomment to simulate items in the cart
-    // { id: 1, name: 'Delicious Burger', price: 5.99 },
-    // { id: 2, name: 'Tasty Pizza', price: 7.99 },
-  ];
-
+  const { cartItems, removeFromCart } = useCart();
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
 
   return (
@@ -23,12 +19,17 @@ const Cart = () => {
             {cartItems.map(item => (
               <div key={item.id} className="flex justify-between items-center border-b py-4 bg-white rounded-lg shadow-md p-4">
                 <span className="text-lg font-medium text-gray-700">{item.name}</span>
-                <span className="text-lg font-semibold text-gray-900">${item.price.toFixed(2)}</span>
+                <span className="text-lg font-semibold text-gray-900">{item.price} Birr</span>
+                <button 
+                  onClick={() => removeFromCart(item.id)}
+                  className="text-red-500 hover:text-red-700">
+                  Remove
+                </button>
               </div>
             ))}
           </div>
           <div className="mt-4 w-full max-w-2xl text-right">
-            <h2 className="text-xl font-bold text-gray-800">Total: ${totalPrice.toFixed(2)}</h2>
+            <h2 className="text-xl font-bold text-gray-800">Total: {totalPrice} Birr</h2>
             <button className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 mt-4">
               Checkout
             </button>

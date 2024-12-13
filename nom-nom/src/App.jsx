@@ -1,27 +1,30 @@
 // src/App.jsx
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { CartProvider } from './Components/Cart/CartContext'; // Ensure the path is correct
 
-import Home from"./Components/Home/Home";
+import Home from "./Components/Home/Home";
 import Menu from './Components/Menu/Menu';
-// import About from './Components/About/About'; // Uncommented About
 import Contact from './Components/Contact/Contact';
-import Cart from './Components/Cart/Cart'; // Uncommented Cart
+import Cart from './Components/Cart/Cart'; 
 import FAQs from './Components/FAQs/FAQs';
 import Header from './Components/Header/Header';
+import About from './Components/About/About';
 
 function App() {
   return (
-    <Router>
-      <Header/>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/menu" element={<Menu />} />
-        {/* <Route path="/about" element={<About />} />  */}
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/cart" element={<Cart />} /> 
-        <Route path="/faqs" element={<FAQs />} />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 
