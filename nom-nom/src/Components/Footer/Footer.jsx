@@ -2,28 +2,11 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-6">
-      <div className="container mx-auto flex flex-col items-center">
-        <p className="text-sm mb-4">
-          &copy; {new Date().getFullYear()} PayPlate. All rights reserved.
+    <footer className="bg-red-500 text-white py-6"> 
+      <div className="container mx-auto">
+        <p className="text-center">
+          &copy; {new Date().getFullYear()} PlatePal. All rights reserved.
         </p>
-        <ul className="flex space-x-4">
-          <li>
-            <a href="#" className="hover:text-gray-200">
-              Terms of Service
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-gray-200">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-gray-200">
-              Contact Us
-            </a>
-          </li>
-        </ul>
       </div>
     </footer>
   );
