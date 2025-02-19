@@ -1,18 +1,17 @@
 // src/App.jsx
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { CartProvider } from './Components/Cart/CartContext'; // Ensure the path is correct
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { CartProvider } from "./Components/Cart/CartContext"; // Ensure the path is correct
 
 import Home from "./Components/Home/Home";
-import Menu from './Components/Menu/Menu';
-import Contact from './Components/Contact/Contact';
-import Cart from './Components/Cart/Cart'; 
-import FAQs from './Components/FAQs/FAQs';
-import Header from './Components/Header/Header';
-import About from './Components/About/About';
-import Checkout from './Components/Checkout/Checkout';
-import Footer from './Components/Footer/Footer';
-
-
+import Menu from "./Components/Menu/Menu";
+import Contact from "./Components/Contact/Contact";
+import Cart from "./Components/Cart/Cart";
+import FAQs from "./Components/FAQs/FAQs";
+import Header from "./Components/Header/Header";
+import About from "./Components/About/About";
+import Checkout from "./Components/Checkout/Checkout";
+import Footer from "./Components/Footer/Footer";
+import CreateAccount from "./Pages/Login/CreateAccount";
 function App() {
   return (
     <CartProvider>
@@ -26,8 +25,9 @@ function App() {
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/about" element={<About />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/create-account" element={<CreateAccount />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </CartProvider>
   );
