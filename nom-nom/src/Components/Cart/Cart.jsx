@@ -1,19 +1,21 @@
-import React from 'react';
-import { MdShoppingCart } from 'react-icons/md';
-import { useCart } from '../../Components/Cart/CartContext';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { MdShoppingCart } from "react-icons/md";
+import { useCart } from "../../Components/Cart/CartContext";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Components/Login/UserContext"; // Import the useAuth hook
 
 const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
   const navigate = useNavigate();
+  const user = useAuth(); // Get the logged-in user from context
 
   const handleCheckout = () => {
-    const isLoggedIn = false; // Replace with actual login check
-    if (isLoggedIn) {
-      navigate('/payment');
+    if (user) {
+      // Check if user is logged in
+      navigate("/payment"); // Redirect to payment if logged in
     } else {
-      navigate('/create-account'); // Redirect to create account if not logged in
+      navigate("/create-account"); // Redirect to create account if not logged in
     }
   };
 
@@ -26,23 +28,34 @@ const Cart = () => {
       {cartItems.length > 0 ? (
         <>
           <div className="space-y-4 w-full max-w-2xl">
-            {cartItems.map(item => (
-              <div key={item.id} className="flex justify-between items-center border-b py-4 bg-white rounded-lg shadow-md p-4">
-                <span className="text-lg font-medium text-gray-700">{item.name}</span>
-                <span className="text-lg font-semibold text-gray-900">{item.price} Birr</span>
-                <button 
+            {cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex justify-between items-center border-b py-4 bg-white rounded-lg shadow-md p-4"
+              >
+                <span className="text-lg font-medium text-gray-700">
+                  {item.name}
+                </span>
+                <span className="text-lg font-semibold text-gray-900">
+                  {item.price} Birr
+                </span>
+                <button
                   onClick={() => removeFromCart(item.id)}
-                  className="text-red-500 hover:text-red-700">
+                  className="text-red-500 hover:text-red-700"
+                >
                   Remove
                 </button>
               </div>
             ))}
           </div>
           <div className="mt-4 w-full max-w-2xl text-right">
-            <h2 className="text-xl font-bold text-gray-800">Total: {totalPrice} Birr</h2>
-            <button 
+            <h2 className="text-xl font-bold text-gray-800">
+              Total: {totalPrice} Birr
+            </h2>
+            <button
               onClick={handleCheckout} // Call handleCheckout on click
-              className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 mt-4">
+              className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 mt-4"
+            >
               Checkout
             </button>
           </div>

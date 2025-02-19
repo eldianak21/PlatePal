@@ -20,9 +20,16 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  // Function to get the total count of items in the cart
+  const getCartCount = () => {
+    return cartItems.length;
+  };
+
   // Provide the cart state and functions to the context
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, getCartCount }}
+    >
       {children}
     </CartContext.Provider>
   );
