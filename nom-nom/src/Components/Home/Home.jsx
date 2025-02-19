@@ -24,7 +24,7 @@ function Home() {
         <p className="text-lg text-gray-600 mb-8 max-w-md">
           Explore our diverse menu, crafted to satisfy every craving!
         </p>
-        <button 
+        <button
           onClick={handleOrderNow} // Add onClick handler
           className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition duration-300 transform hover:scale-105">
           Order Now
@@ -36,22 +36,22 @@ function Home() {
         <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform duration-300 hover:scale-105">
           <img src={burger} alt="Delicious Burger" className="w-full h-32 object-cover rounded-lg mb-2" />
           <h3 className="font-semibold text-lg text-gray-700">Delicious Burger</h3>
-          <p className="text-gray-600">$5.99</p>
+          <p className="text-gray-600">450 Birr</p>
         </div>
         <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform duration-300 hover:scale-105">
           <img src={pizza} alt="Tasty Pizza" className="w-full h-32 object-cover rounded-lg mb-2" />
           <h3 className="font-semibold text-lg text-gray-700">Tasty Pizza</h3>
-          <p className="text-gray-600">$7.99</p>
+          <p className="text-gray-600">399 Birr</p>
         </div>
         <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform duration-300 hover:scale-105">
           <img src={pasta} alt="Creamy Pasta" className="w-full h-32 object-cover rounded-lg mb-2" />
           <h3 className="font-semibold text-lg text-gray-700">Creamy Pasta</h3>
-          <p className="text-gray-600">$8.49</p>
+          <p className="text-gray-600">300 Birr</p>
         </div>
         <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform duration-300 hover:scale-105">
           <img src={salad} alt="Fresh Salad" className="w-full h-32 object-cover rounded-lg mb-2" />
           <h3 className="font-semibold text-lg text-gray-700">Fresh Salad</h3>
-          <p className="text-gray-600">$4.99</p>
+          <p className="text-gray-600">250 Birr</p>
         </div>
       </section>
     </div>

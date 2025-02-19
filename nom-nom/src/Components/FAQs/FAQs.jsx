@@ -11,15 +11,17 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="p-5 bg-white">
-      <h1 className="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h1>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div key={index} className="border-b pb-2">
-            <h2 className="font-semibold">{faq.question}</h2>
-            <p className="text-gray-700">{faq.answer}</p>
-          </div>
-        ))}
+    <div className="min-h-screen flex flex-col items-center bg-yellow-50">
+      <div className="w-full max-w-4xl mx-auto bg-yellow-75 rounded-lg shadow-lg p-8">
+        <h1 className="text-4xl font-bold text-center text-white bg-red-500 rounded p-4 mb-6">Frequently Asked Questions</h1>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border-b pb-2">
+              <h2 className="font-semibold text-gray-800">{faq.question}</h2>
+              <p className="text-gray-700">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

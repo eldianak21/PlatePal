@@ -1,17 +1,20 @@
-// src/Components/Cart/Cart.jsx
 import React from 'react';
 import { MdShoppingCart } from 'react-icons/md';
 import { useCart } from '../../Components/Cart/CartContext';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleCheckout = () => {
-    // Navigate to the checkout page
-    navigate('/checkout');
+    const isLoggedIn = false; // Replace with actual login check
+    if (isLoggedIn) {
+      navigate('/payment');
+    } else {
+      navigate('/create-account'); // Redirect to create account if not logged in
+    }
   };
 
   return (

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto">
         <p className="text-center">
           &copy; {new Date().getFullYear()} PlatePal. All rights reserved.
-        </p>` `
+        </p>
       </div>
     </footer>
   );
