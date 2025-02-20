@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase"; // Adjust the path based on your directory structure
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 
 const CreateAccount = () => {
   const [email, setEmail] = useState("");
@@ -11,17 +11,26 @@ const CreateAccount = () => {
 
   const handleCreateAccount = async () => {
     try {
-      // Create user with email and password
       await createUserWithEmailAndPassword(auth, email, password);
       console.log("Account created:", { email });
       navigate("/Payment"); // Redirect to checkout on success
     } catch (error) {
-      setError(error.message); // Set error message if account creation fails
+      setError(error.message);
     }
   };
 
   const handleLoginRedirect = () => {
     navigate("/login");
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log("User signed out");
+      navigate("/login"); // Redirect to login page after logout
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
   };
 
   return (
@@ -61,6 +70,12 @@ const CreateAccount = () => {
               Login
             </button>
           </p>
+          <button
+            onClick={handleLogout}
+            className="mt-4 bg-gray-500 text-white py-2 px-4 rounded text-lg"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </div>
