@@ -9,6 +9,8 @@ const Header = () => {
   const user = useAuth(); // Get the logged-in user from context
   const cartCount = getCartCount(); // Get the current cart count
 
+  console.log("Cart Count:", cartCount); // Debugging line
+
   return (
     <header className="sticky top-0 z-50 bg-red-500 bg-opacity-90 text-white backdrop-blur-lg shadow-md">
       <div className="flex justify-between items-center p-4">
@@ -42,8 +44,7 @@ const Header = () => {
             to="/create-account"
             className="hover:underline flex items-center"
           >
-            <i className="material-icons">account_circle</i>{" "}
-            {/* Account icon */}
+            <i className="material-icons">account_circle</i>
           </Link>
           <div className="relative">
             <Link to="/cart" className="flex items-center">
