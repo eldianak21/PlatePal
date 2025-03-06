@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase"; // Adjust the path based on your directory structure
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline"; // Updated for Heroicons v2
 
 const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
   const navigate = useNavigate();
 
   const handleCreateAccount = async () => {
@@ -33,6 +35,10 @@ const CreateAccount = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex-grow flex items-center justify-center bg-yellow-50">
@@ -47,14 +53,27 @@ const CreateAccount = () => {
             className="border p-3 mb-3 w-full text-lg"
             required
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="border p-3 mb-6 w-full text-lg"
-            required
-          />
+          <div className="relative mb-6">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="border p-3 w-full text-lg pr-10" // Add padding to the right for the icon
+              required
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute right-3 top-3" // Position the icon
+            >
+              {showPassword ? (
+                <EyeSlashIcon className="h-5 w-5 text-gray-500" />
+              ) : (
+                <EyeIcon className="h-5 w-5 text-gray-500" />
+              )}
+            </button>
+          </div>
           <button
             onClick={handleCreateAccount}
             className="bg-red-500 text-white py-3 px-6 rounded text-lg"
